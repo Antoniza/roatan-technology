@@ -1,0 +1,1 @@
+<script src="{{asset('js/layout/main.function.js')}}"></script>

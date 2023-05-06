@@ -1,0 +1,151 @@
+.main-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.main-header {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  overflow: hidden;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(18, 18, 197);
+  padding: 0 0 0 15px;
+  z-index: 5;
+}
+
+.header-brand{
+  display: flex;
+  gap: 20px;
+}
+
+.header-brand a{
+  color: #fff;
+  font-size: 18px;
+}
+
+.header-options {
+  width: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-options li a {
+  color: #fff;
+  font-size: 18px;
+  height: 100%;
+  transition: all 0.4s ease-in-out;
+  padding: 8px 5px;
+  position: relative;
+}
+
+.header-options li a:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 0.125rem;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.header-options li a:hover,
+.header-options li a.active {
+  color: #000;
+  transition: all 0.2s ease-in-out;
+}
+
+.header-options li a:hover:after,
+.header-options li a.active:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.header-options .profile{
+  display: flex;
+  align-items: center;
+  background-color: #ffae00;
+  height: 100%;
+  padding: 0 12px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 25px;
+}
+
+.main-body{
+  width: 100%;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+.profile-menu{
+  width: 250px;
+  height: 0;
+  overflow: hidden;
+  background-color: #049c18;
+  position: absolute;
+  right: 0;
+  border-radius: 0 0 15px 15px;
+  transition: all 0.4s ease-in-out;
+  z-index: 10;
+}
+
+.profile-menu.show{
+  height: 350px;
+  transition: all 0.4s ease-in-out;
+}
+
+.profile-menu .profile-header{
+  width: 100%;
+  height: 65%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.profile-menu .profile-header img{
+  width: 100%;
+}
+
+.profile-menu .profile-header span{
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.profile-menu .profile-body{
+  width: 100%;
+  height: 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.profile-menu .profile-body a{
+  width: 100%;
+  height: 50%;
+  background-color: #ffae00;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  color: #fff;
+  font-weight: 800;
+}
+
+.profile-menu .profile-body a:hover{
+  background-color: #b47d05;
+  transition: all 0.2s ease-in-out;
+}
