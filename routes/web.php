@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductsServicesController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TechnicalsController;
+use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\RepairsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -40,14 +43,20 @@ Route::get('/logout', function(){
 
 // * DASHBOARD ROUTES
 
-Route::get('/dashboard', function () {
-    return response()->view('admin.index');
-})->name('dashboard')->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
-Route::get('/repairs', function () {
-    return response()->view('admin.repairs');
-})->name('dashboard-repairs')->middleware('auth');
+
+// * REPAIRS ROUTES
+
+Route::get('/repairs', [RepairsController::class, 'index'])->name('dashboard-repairs')->middleware('auth');
+// * TECHNICALS ROUTES
 
 Route::get('/technicals', [TechnicalsController::class, 'index'])->name('dashboard-technicals')->middleware('auth');
 
+// * SERVICES AND PRODUCTS ROUTES
+
 Route::get('/services-products', [ProductsServicesController::class, 'index'])->name('dashboard-services_products')->middleware('auth');
+
+// * SETTINGS ROUTES
+
+Route::get('/settings', [SettingsController::class, 'index'])->name('dashboard-settings')->middleware('auth');

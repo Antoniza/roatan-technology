@@ -3,9 +3,9 @@
 
 :root {
   --primary-color: #ffffff;
-  --secondary-color: #38220f;
-  --dark-color: #140b07;
-  --hover-menu-color: #634832;
+  --secondary-color: #1a0fdf;
+  --dark-color: #000563;
+  --hover-menu-color: #00b9b9;
   --font-menu-color: #ffffff;
 }
 
@@ -40,4 +40,131 @@ body {
 .table-container{
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+
+.dataTables_wrapper{
+  margin-top: 1rem;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.table-container{
+  overflow-y: hidden;
+}
+
+.dataTables_wrapper table{
+  margin-top: 2rem;
+}
+
+.dataTables_wrapper thead{
+  background-color: var(--secondary-color);
+  color: #fff;
+}
+
+.dataTables_wrapper tbody tr a{
+  color: #000000;
+}
+
+.dataTables_wrapper tbody tr:nth-child(even) {background: #CCC}
+
+.dataTables_wrapper tbody tr:nth-child(odd) {background: #FFF}
+
+.buttons-excel{
+  padding: 10px 15px;
+  background-color: rgb(15, 122, 33) !important;
+  color: #fff !important;
+  font-weight: 600;
+  border-radius: 8px !important;
+  margin: 0 10px 0 10px;
+}
+
+.buttons-excel:hover{
+  background-color: rgb(15, 63, 23);
+}
+
+.buttons-print{
+  padding: 10px 15px;
+  background-color: rgb(148, 148, 148) !important;
+  color: #000000 !important;
+  font-weight: 600;
+  border-radius: 8px !important;
+}
+
+.buttons-print:hover{
+  background-color: rgb(105, 105, 105);
+}
+
+.buttons-colvis{
+  padding: 10px 15px;
+  background-color: rgb(21, 93, 201) !important;
+  color: #fff !important;
+  font-weight: 600;
+  border-radius: 8px !important;
+  margin: 0 10px 0 10px;
+}
+
+.buttons-columnVisibility{
+  padding: 10px 15px;
+  background-color: rgb(253, 117, 39) !important;
+  color: #000 !important;
+  font-weight: 600;
+  border-radius: 8px !important;
+  margin: 0 10px 0 10px;
+}
+
+.buttons-columnVisibility.active{
+  background-color: rgb(248, 98, 11) !important;
+}
+
+.delete{
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  color: #ffffff;
+  background-color: rgb(128, 0, 0);
+  cursor: pointer;
+  user-select: none;
+}
+
+.delete:hover{
+  background-color: rgb(151, 68, 68);
+}
+
+.summary-container{
+  position: relative;
+}
+
+#summary-btn_p,
+#summary-btn_s{
+  user-select: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.drop-icon{
+  transform: rotate(0);
+  position: absolute;
+  margin-left: 1%;
+  transition: all 0.4s ease-in-out;
+}
+
+.rotate{
+  transform: rotate(180deg);
+  position: absolute;
+  margin-left: 1%;
+  transition: all 0.4s ease-in-out;
+}
+
+#summary_p,
+#summary_s{
+  display: none;
+  transition: all 0.4s ease-in-out;
+}
+
+#summary_p.show,
+#summary_s.show{
+  display: block;
+  transition: all 0.4s ease-in-out;
 }
