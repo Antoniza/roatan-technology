@@ -19,7 +19,7 @@
                         <option value="Laptops">Computadoras</option>
                         <option value="Laptops">Laptops</option>
                         <option value="Smart Watch">Smart Watch</option>
-                        <option value="Telefonos">Telefonos</option>
+                        <option value="Telefonos">Teléfonos</option>
                         <option value="Tablets">Tablets</option>
                         <option value="General">General</option>
                     </select>
