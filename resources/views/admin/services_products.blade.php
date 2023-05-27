@@ -26,11 +26,14 @@
                 <tbody>
                     @foreach ($products as $item)
                         <tr>
-                            <tb>{{$item->id}}</tb>
-                            <tb>{{$item->name}}</tb>
-                            <tb>{{$item->price}}</tb>
-                            <tb>{{$item->quantity}}</tb>
-                            <tb>edit | delete</tb>
+                            <td>{{$item->id}}</td>
+                            <td><a href="/products/{{$item->id}}" class="edit-product">{{$item->name}} <i class="fa-solid fa-pen-to-square"></i></a></td>
+                            <td>{{$item->price}} Lps</td>
+                            <td>{{$item->quantity}} Unidades</td>
+                            <td>
+                                <button class="delete deleteProduct" data-id="{{ $item->id }}"
+                                    data-token="{{ csrf_token() }}"><i class="fa-solid fa-trash"></i> Borrar</button>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -41,7 +44,7 @@
     <div class="summary-container">
         <span id="summary-btn_s">Tabla de Servicios <span class="drop-icon"><i class="fa-solid fa-chevron-up"></i></span></span>
     </div>
-    <div id="summary_s">
+    <div id="summary_s" class="show">
         <div class="table-container">
             <h3>Lista de Servicios</h3>
             <table id="services-table" class="hover stripe row-border" style="width:100%">
@@ -49,19 +52,20 @@
                     <tr>
                         <th>Id</th>
                         <th>Nombre</th>
-                        <th>Correo</th>
-                        <th>Telefono</th>
+                        <th>Precio</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($services as $item)
                         <tr>
-                            <tb>{{$item->id}}</tb>
-                            <tb>{{$item->name}}</tb>
-                            <tb>{{$item->email}}</tb>
-                            <tb>{{$item->phone}}</tb>
-                            <tb>edit | delete</tb>
+                            <td>{{$item->id}}</td>
+                            <td><a href="/services/{{$item->id}}" class="edit-service">{{$item->name}} <i class="fa-solid fa-pen-to-square"></i></a></td>
+                            <td>{{$item->price}} Lps</td>
+                            <td>
+                                <button class="delete deleteService" data-id="{{ $item->id }}"
+                                    data-token="{{ csrf_token() }}"><i class="fa-solid fa-trash"></i> Borrar</button>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -73,11 +77,6 @@
 <script>
     $('#services-table').DataTable({
         dom: 'Bfrtip',
-        columnDefs: [{
-                target: 0,
-                visible: false,
-            },
-        ],
         buttons: [{
                 extend: 'colvis',
                 text: 'Columnas',
@@ -149,11 +148,6 @@
 
     $('#products-table').DataTable({
         dom: 'Bfrtip',
-        columnDefs: [{
-                target: 0,
-                visible: false,
-            },
-        ],
         buttons: [{
                 extend: 'colvis',
                 text: 'Columnas',

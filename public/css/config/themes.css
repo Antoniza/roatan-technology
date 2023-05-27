@@ -1,0 +1,37 @@
+.main-container.dark .main-header{
+    background-color: black;
+    color: #fff;
+    transition: all 0.4s ease-in-out;
+}
+
+.main-container.dark .header-options li a:after{
+    background-color: #fff;
+}
+
+.main-container.dark .header-options li a:hover,
+.main-container.dark .header-options li a.active{
+    color: #fff;
+}
+
+.main-container.dark .main-body{
+    background-color: #062f4f;
+    transition: all 0.4s ease-in-out;
+    color: #fff;
+}
+
+.main-container.dark .circle_2{
+    background-color: #094472;
+}
+
+.main-container.dark .circle_1{
+    background-color: #a57304;
+}
+
+.main-container.dark .dataTables_filter input{
+    color: #fff;
+}
+
+.main-container.dark .dataTables_wrapper thead{
+    background-color: #0f1557;
+    color: #fff;
+  }

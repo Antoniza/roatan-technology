@@ -10,6 +10,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url('../images/back.gif');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 form {
@@ -17,11 +22,13 @@ form {
   height: max-content;
   padding: 2rem;
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  background-color: aquamarine;
+  gap: 15px;
   border-radius: 15px;
+  background-color: #ffffff3b;
+  font-family: FontAwesome;
 }
 
 form label {
@@ -29,17 +36,30 @@ form label {
   align-items: center;
 }
 
+form img{
+  width: 80%;
+}
+
 form input {
   width: 100%;
+  border-radius: 20px;
   padding: 0.5rem 1.5rem;
-  margin: 0.5rem 0 0.5rem 0;
+  height: 40px;
+  border: none;
+  outline: none;
+}
+
+form input:focus{
+  border: none;
+  outline: none;
 }
 
 form button {
+  width: 100%;
+  height: 40px;
+  border-radius: 50px;
   border: none;
-  padding: 1rem;
   background-color: rgb(87, 87, 245);
-  border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
 }

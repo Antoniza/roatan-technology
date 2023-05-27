@@ -54,6 +54,7 @@ body {
 
 .dataTables_wrapper table{
   margin-top: 2rem;
+  color: #000;
 }
 
 .dataTables_wrapper thead{

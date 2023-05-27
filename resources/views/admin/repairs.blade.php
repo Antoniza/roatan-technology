@@ -5,7 +5,7 @@
     </div>
     <hr>
     <div class="table-container">
-        <h3>Lista de técnicos</h3>
+        <h3>Lista de Reparaciones</h3>
         <table id="repairs-table" class="hover stripe row-border" style="width:100%">
             <thead>
                 <tr>

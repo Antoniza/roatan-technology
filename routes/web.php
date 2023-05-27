@@ -41,6 +41,10 @@ Route::get('/logout', function(){
     return redirect()->route('login');
 })->name('logout');
 
+Route::get('/home', function(){
+    return redirect()->route('dashboard');
+})->name('logout');
+
 // * DASHBOARD ROUTES
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
@@ -53,9 +57,33 @@ Route::get('/repairs', [RepairsController::class, 'index'])->name('dashboard-rep
 
 Route::get('/technicals', [TechnicalsController::class, 'index'])->name('dashboard-technicals')->middleware('auth');
 
+Route::get('/technicals/{id}', [TechnicalsController::class, 'edit'])->name('dashboard-edit-technical')->middleware('auth');
+
+Route::post('/technicals/{id}', [TechnicalsController::class, 'update'])->name('dashboard-update-technical')->middleware('auth');
+
+Route::post('/technicals', [TechnicalsController::class, 'store'])->name('dashboard-technicals-post')->middleware('auth');
+
+Route::delete('/technicals/{id}', [TechnicalsController::class, 'delete'])->name('dashboard-technicals-delete')->middleware('auth');
+
 // * SERVICES AND PRODUCTS ROUTES
 
 Route::get('/services-products', [ProductsServicesController::class, 'index'])->name('dashboard-services_products')->middleware('auth');
+
+Route::get('/products/{id}', [ProductsServicesController::class, 'edit_product'])->name('dashboard-edit-product')->middleware('auth');
+
+Route::post('/products/{id}', [ProductsServicesController::class, 'update_product'])->name('dashboard-update-product')->middleware('auth');
+
+Route::delete('/products/{id}', [ProductsServicesController::class, 'delete_product'])->name('dashboard-delete-product')->middleware('auth');
+
+Route::post('/products', [ProductsServicesController::class, 'store_product'])->name('dashboard-products-post')->middleware('auth');
+
+Route::post('/services', [ProductsServicesController::class, 'store_service'])->name('dashboard-services-post')->middleware('auth');
+
+Route::get('/services/{id}', [ProductsServicesController::class, 'edit_service'])->name('dashboard-edit-service')->middleware('auth');
+
+Route::post('/services/{id}', [ProductsServicesController::class, 'update_service'])->name('dashboard-update-service')->middleware('auth');
+
+Route::delete('/services/{id}', [ProductsServicesController::class, 'delete_service'])->name('dashboard-delete-service')->middleware('auth');
 
 // * SETTINGS ROUTES
 

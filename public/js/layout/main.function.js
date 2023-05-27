@@ -11,6 +11,13 @@ $(document).ready(function () {
     $(".main-body").load($(this).attr("href"));
   });
 
+  let darkMode = localStorage.getItem('darkMode');
+  if(darkMode){
+    $('.main-container').addClass('dark');
+  }else{
+    $('.main-container').removeClass('dark');
+  }
+
   $(".profile").on("click", function (event) {
     event.preventDefault();
 
@@ -29,4 +36,38 @@ $(document).ready(function () {
     $(".active").removeClass("active");
     $(".profile-menu").toggleClass("show");
   });
+
+  $('.cancel-button').click(function(){
+    $('.modal').removeClass('show');
+    $('.modal-shadow').removeClass('show');
+  });
+
+  $('.modal-shadow').click(function () {
+    $('.modal').removeClass('show');
+    $(this).removeClass('show');
+  })
+});
+
+// * SHORTCUTS SETTINGS
+
+$(document).bind('keydown', 'F1', function (e) {
+  e.preventDefault();
+  $(".main-body").load('/repairs');
+  $(".active").removeClass("active");
+});
+
+$(document).bind('keydown', 'F2', function (e) {
+  e.preventDefault();
+  $(".main-body").load('/technicals');
+  $(".active").removeClass("active");
+});
+
+$(document).bind('keydown', 'F3', function (e) {
+  e.preventDefault();
+  $(".main-body").load('/services-products');
+  $(".active").removeClass("active");
+});
+
+$(document).bind('keydown', 'esc', function () {
+  $(".main-body").load($(location).attr('href', 'dashboard'));
 });

@@ -1,11 +1,11 @@
 <body>
     <div class="header-technical">
         <h1>Sección de Técnicos</h1>
-        <a id="newProductButton"><button> <span><i class="fa-solid fa-user-plus"></i></span> Nuevo Técnico</button></a>
+        <a id="newTechnicalButton"><button> <span><i class="fa-solid fa-user-plus"></i></span> Nuevo Técnico</button></a>
     </div>
     <hr>
     <div class="table-container">
-        <h3>Lista de técnicos</h3>
+        <h3>Lista de Técnicos</h3>
         <table id="technicals-table" class="hover stripe row-border" style="width:100%">
             <thead>
                 <tr>
@@ -13,20 +13,22 @@
                     <th>Nombre</th>
                     <th>Correo</th>
                     <th>Telefono</th>
+                    <th>Especialidad</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($technicals as $item)
                     <tr>
-                        <tb>{{$item->id}}</tb>
-                        <tb>{{$item->name}}</tb>
-                        <tb>{{$item->email}}</tb>
-                        <tb>{{$item->phone}}</tb>
-                        <tb>
+                        <td>{{$item->id}}</td>
+                        <td><a href="/technicals/{{$item->id}}" class="edit-technical">{{$item->name}} <i class="fa-solid fa-pen-to-square"></i></a></td>
+                        <td>{{$item->email}}</td>
+                        <td>{{$item->phone}}</td>
+                        <td>{{$item->speciality}}</td>
+                        <td>
                             <button class="delete deleteTechnical" data-id="{{ $item->id }}"
                                 data-token="{{ csrf_token() }}"><i class="fa-solid fa-trash"></i> Borrar</button>
-                        </tb>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
@@ -37,11 +39,6 @@
 <script>
     $('#technicals-table').DataTable({
         dom: 'Bfrtip',
-        columnDefs: [{
-                target: 0,
-                visible: false,
-            },
-        ],
         buttons: [{
                 extend: 'colvis',
                 text: 'Columnas',
@@ -73,7 +70,7 @@
                                     <img src="{{ asset('images/logo_roatan.png') }}" style="width: 60%" />
                                 </div>
                                 <div style="width: 60%; margin-top: 5%;">
-                                    <h2>Lista de Clientes</h2>
+                                    <h2>Lista de Técnicos</h2>
                                 </div>
                             </div>
 
