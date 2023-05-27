@@ -16,7 +16,7 @@
                 <div class="form-group">
                     <label for="">Especialidad</label>
                     <select name="technical_specialty" id="technical_speciality" class="form-control">
-                        <option value="Laptops">Computadoras</option>
+                        <option value="Computadoras">Computadoras</option>
                         <option value="Laptops">Laptops</option>
                         <option value="Smart Watch">Smart Watch</option>
                         <option value="Telefonos">Teléfonos</option>
