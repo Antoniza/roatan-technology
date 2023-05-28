@@ -15,7 +15,7 @@ class TechnicalsController extends Controller
     public function store(Request $request){
         $validator = $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => ['required','unique:technicals'],
             'phone' => 'required',
             'speciality' => 'required',
         ]);
