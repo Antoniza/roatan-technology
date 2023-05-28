@@ -35,27 +35,9 @@ $("#submit-technical-button").click(function () {
       },
     })
     .fail(function (jqXHR, textStatus, errorThrown) {
-      if (jqXHR.responseJSON.errors.name) {
-        $("#technical_name-error").html(jqXHR.responseJSON.errors.name);
-      }
-
-      if (jqXHR.responseJSON.errors.speciality) {
-        $("#technical_speciality-error").html(
-          jqXHR.responseJSON.errors.speciality
-        );
-      }
-
-      if (jqXHR.responseJSON.errors.email) {
-        $("#technical_email-error").html(
-          jqXHR.responseJSON.errors.email
-        );
-      }
-
-      if (jqXHR.responseJSON.errors.phone) {
-        $("#technical_phone-error").html(
-          jqXHR.responseJSON.errors.phone
-        );
-      }
+      $("#technical_email-error").html(
+        'Este correo ya existe'
+      );
     });
 
   $("#technical_name-error").html("");
@@ -73,6 +55,7 @@ $("#newTechnicalButton").click(function () {
   jQuery("#technical_speciality").val("");
   jQuery("#technical_phone").val("");
   jQuery("#technical_email").val("");
+  $("#technical_email-error").html("");
 
   $('#update-technical-button').css('display', 'none');
   $('#submit-technical-button').css('display', 'block');
@@ -150,27 +133,9 @@ $("#update-technical-button").click(function () {
       },
     })
     .fail(function (jqXHR, textStatus, errorThrown) {
-      if (jqXHR.responseJSON.errors.name) {
-        $("#technical_name-error").html(jqXHR.responseJSON.errors.name);
-      }
-
-      if (jqXHR.responseJSON.errors.speciality) {
-        $("#technical_speciality-error").html(
-          jqXHR.responseJSON.errors.speciality
-        );
-      }
-
-      if (jqXHR.responseJSON.errors.email) {
-        $("#technical_email-error").html(
-          jqXHR.responseJSON.errors.email
-        );
-      }
-
-      if (jqXHR.responseJSON.errors.phone) {
-        $("#technical_phone-error").html(
-          jqXHR.responseJSON.errors.phone
-        );
-      }
+      $("#technical_email-error").html(
+        'Este correo ya existe'
+      );
     });
 
   $("#technical_name-error").html("");
@@ -195,6 +160,7 @@ $(".edit-technical").click(function (e) {
 
       $("#technical-modal-title").html("Editar Técnico");
 
+      $("#technical_email-error").html("");
       $("#technical-modal").addClass("show");
       $(".modal-shadow").addClass("show");
     },
