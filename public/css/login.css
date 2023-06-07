@@ -28,7 +28,6 @@ form {
   gap: 15px;
   border-radius: 15px;
   background-color: #ffffff3b;
-  font-family: FontAwesome;
 }
 
 form label {
@@ -66,4 +65,35 @@ form button {
 
 form button:hover {
   background-color: rgb(71, 71, 216);
+}
+
+.fail_login{
+  width: 360px;
+  padding: 1rem;
+  background-color: rgba(255, 0, 0, 0.75);
+  margin-bottom: .5rem;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.success_alert{
+  width: 360px;
+  padding: 1rem;
+  background-color: rgba(0, 255, 26, 0.75);
+  margin-bottom: .5rem;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  color: #000000;
+}
+
+form a{
+  text-transform: lowercase;
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
 }

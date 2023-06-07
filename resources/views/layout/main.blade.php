@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="_token" content="{!! csrf_token() !!}"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Roatán Technology</title>
 
     {{-- * IMPORTING THE CSS ELEMENTS --}}
@@ -26,6 +28,7 @@
     <script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.colVis.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
 </head>
 
@@ -60,6 +63,12 @@
                     <a href="/logout" class="logout">Salir</a>
                 </div>
             </div>
+
+            <div class="loading">
+                <div class="lds-dual-ring"></div>
+                <h2>Procesando...</h2>
+            </div>
+
             <div class="modals">
                 <div class="modal-shadow"></div>
                 @include('includes.admin.NewTechnical')

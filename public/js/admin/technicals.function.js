@@ -1,8 +1,10 @@
 $("#submit-technical-button").click(function () {
+  $('.loading').css('display', 'flex');
+  let phone = jQuery("#technical_phone").val().replace(/[^0-9]/g, '');
   var dataForm = {
     name: jQuery("#technical_name").val(),
     speciality: jQuery("#technical_speciality").find(":selected").val(),
-    phone: jQuery("#technical_phone").val(),
+    phone,
     email: jQuery("#technical_email").val(),
   };
   $.ajaxSetup({
@@ -24,6 +26,7 @@ $("#submit-technical-button").click(function () {
         $("#technical-modal").removeClass("show");
         $(".modal-shadow").removeClass("show");
 
+        $('.loading').css('display', 'none');
         swal({
           title: "Exitoso",
           text: result.message,
@@ -56,6 +59,8 @@ $("#submit-technical-button").click(function () {
           jqXHR.responseJSON.errors.phone
         );
       }
+
+      $('.loading').css('display', 'none');
     });
 
   $("#technical_name-error").html("");
@@ -78,8 +83,6 @@ $("#newTechnicalButton").click(function () {
   $('#submit-technical-button').css('display', 'block');
 });
 
-$("#technical_phone").inputmask("+(999) 9999-9999");
-
 $(".deleteTechnical").click(function () {
   swal({
     title: "Eliminando",
@@ -89,6 +92,7 @@ $(".deleteTechnical").click(function () {
     dangerMode: true,
   }).then((willDelete) => {
     if (willDelete) {
+      $('.loading').css('display', 'flex');
       var id = $(this).data("id");
       var token = $(this).data("token");
       $.ajax({
@@ -101,23 +105,26 @@ $(".deleteTechnical").click(function () {
           _token: token,
         },
         success: function () {
+          $('.loading').css('display', 'none');
           $(".main-body").load("/technicals");
         },
       });
-      swal("!Se eliminó el técnico correctamente!", {
+      swal("¡Se eliminó el técnico correctamente!", {
         icon: "success",
       });
     } else {
+      $('.loading').css('display', 'none');
       swal("Acción cancelada.");
     }
   });
 });
 
 $("#update-technical-button").click(function () {
+  $('.loading').css('display', 'flex');
   var dataForm = {
     name: jQuery("#technical_name").val(),
     speciality: jQuery("#technical_speciality").find(":selected").val(),
-    phone: jQuery("#technical_phone").val(),
+    phone: jQuery("#technical_phone").val().replace(/[^0-9]/g, ''),
     email: jQuery("#technical_email").val(),
   };
   $.ajaxSetup({
@@ -138,6 +145,8 @@ $("#update-technical-button").click(function () {
 
         $("#technical-modal").removeClass("show");
         $(".modal-shadow").removeClass("show");
+
+        $('.loading').css('display', 'none');
 
         swal({
           title: "Exitoso",
@@ -171,6 +180,8 @@ $("#update-technical-button").click(function () {
           jqXHR.responseJSON.errors.phone
         );
       }
+
+      $('.loading').css('display', 'none');
     });
 
   $("#technical_name-error").html("");
@@ -180,6 +191,7 @@ $("#update-technical-button").click(function () {
 });
 
 $(".edit-technical").click(function (e) {
+  $('.loading').css('display', 'flex');
   e.preventDefault();
   $('#update-technical-button').css('display', 'block');
   $('#submit-technical-button').css('display', 'none');
@@ -187,6 +199,7 @@ $(".edit-technical").click(function (e) {
     url: $(this).attr("href"),
     method: "get",
     success: function (result) {
+      $('.loading').css('display', 'none');
       jQuery("#technical_id").val(result.technicals.id);
       jQuery("#technical_name").val(result.technicals.name);
       jQuery("#technical_speciality").val(result.technicals.speciality);

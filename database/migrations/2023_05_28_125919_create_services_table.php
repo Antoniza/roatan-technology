@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_services', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             $table->string('name');
-            $table->string('type');
-            $table->integer('quantity')->nullable();
             $table->double('price');
             $table->bigInteger('updated_by')->unsigned();
             $table->foreign('updated_by')->references('id')->on('users');
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_services');
+        Schema::dropIfExists('services');
     }
 };

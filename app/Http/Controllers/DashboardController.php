@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class DashboardController extends Controller
@@ -25,13 +27,18 @@ class DashboardController extends Controller
             'chart_title' => 'Reparaciones del mes',
             'report_type' => 'group_by_string',
             'model' => 'App\Models\Repair',
-            'group_by_field' => 'client_name',
+            'group_by_field' => 'status',
             'chart_type' => 'pie',
             'filter_field' => 'created_at',
             'filter_period' => 'month',
         ];
         $repairs_pending = new LaravelChart($chart_repairs_pending);
 
-        return response()->view('admin.index', compact('chart_repairs', 'repairs_pending'));
+        $todayData = DB::table('repairs')
+            ->selectRaw('count(*) as repairs, sum(total) as total')
+            ->whereDate('created_at', Carbon::today())
+            ->get();
+
+        return response()->view('admin.index', compact('chart_repairs', 'repairs_pending', 'todayData'));
     }
 }

@@ -23,7 +23,7 @@
                         <td>{{$item->id}}</td>
                         <td><a href="/technicals/{{$item->id}}" class="edit-technical">{{$item->name}} <i class="fa-solid fa-pen-to-square"></i></a></td>
                         <td>{{$item->email}}</td>
-                        <td>{{$item->phone}}</td>
+                        <td>{{$item->phone}} <a title="Click para chatear" class="whatsapp_button" href="https://api.whatsapp.com/send?phone={{$item->phone}}" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a> </td>
                         <td>{{$item->speciality}}</td>
                         <td>
                             <button class="delete deleteTechnical" data-id="{{ $item->id }}"

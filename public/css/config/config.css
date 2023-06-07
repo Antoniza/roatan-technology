@@ -169,3 +169,8 @@ body {
   display: block;
   transition: all 0.4s ease-in-out;
 }
+
+.whatsapp_button{
+  font-size: 25px;
+  color: #08a315 !important;
+}

@@ -1,171 +1,175 @@
 .dashboard-container {
-	display: flex;
-	justify-content: flex-start;
-	align-items: flex-start;
-	flex-wrap: wrap;
-	gap: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .dashboard-container .cards-container {
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
-	gap: 1%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1%;
 }
 
 .dashboard-container .card {
-	width: 32%;
-	height: 300px;
-	border-radius: 5px;
-	overflow: hidden;
-	box-shadow: #000 0 0px 15px;
-	transition: all 0.2s ease-in-out;
+  width: 32%;
+  height: 300px;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: #000 0 0px 15px;
+  transition: all 0.2s ease-in-out;
 }
 
 .dashboard-container .card:hover {
-	transform: scale(1.02);
-	transition: all 0.2s ease-in-out;
+  transform: scale(1.02);
+  transition: all 0.2s ease-in-out;
 }
 
 .dashboard-container .card .card-header {
-	width: 100%;
-	height: 20%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.card-header h3{
+.card-header h3 {
   z-index: 3;
 }
 
 .dashboard-container .card .card-body {
-	width: 100%;
-	height: 80%;
-    position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	user-select: none;
+  width: 100%;
+  height: 80%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  user-select: none;
 }
 
 .dashboard-container .card .card-body h5 {
-	font-size: 58px;
-	font-weight: 800;
+  font-size: 58px;
+  font-weight: 800;
 }
 
-.dashboard-container .card .card-body h5 span{
-	font-size: 25px;
-	font-style:oblique;
+.dashboard-container .card .card-body h5 span {
+  font-size: 25px;
+  font-style: oblique;
 }
 
 .charts-container {
-	width: 100%;
+  width: 100%;
   height: max-content;
-	display: flex;
-	justify-content: center;
-	padding: .5rem;
-	border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 15px;
 }
 
-.charts-container div{
-	width: 50%;
-	height: max-content;
+.charts-container div {
+  width: 50%;
+  height: max-content;
 }
 
-.charts-container div canvas{
-	width: 100% !important;
-	height: 100%;
+.charts-container div canvas {
+  width: 100% !important;
+  height: 100%;
 }
 
-.charts-container .pie-chart{
+.charts-container .pie-chart {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.charts-container .pie-chart canvas{
+.charts-container .pie-chart canvas {
   width: 400px !important;
   height: 400px !important;
 }
 
-.circle{
-    width: 280px;
-    height: 280px;
-    border-radius: 50%;
-    position: absolute;
-    z-index: 1;
+.circle {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
 }
 
-.card-content{
+.card-content {
   z-index: 3;
 }
 
-.circle_1{
-    bottom: -15%;
-    right: -15%;
-    background-color: #ffae00;
+.circle_1 {
+  bottom: -15%;
+  right: -15%;
+  background-color: #ffae00;
 }
 
-.circle_1.a{
+.circle_1.a {
   animation: floating2 16s 2s infinite ease-in-out;
 }
 
-.circle_1.b{
+.circle_1.b {
   animation: floating2 16s 4s infinite ease-in-out;
 }
 
-.circle_1.c{
+.circle_1.c {
   animation: floating2 16s 6s infinite ease-in-out;
 }
 
-.circle_2{
-    top: -55%;
-    left: -25%;
-    background-color: rgb(29, 90, 233);
+.circle_2 {
+  top: -55%;
+  left: -25%;
+  background-color: rgb(29, 90, 233);
 }
 
 @keyframes floating2 {
-  0%{
+  0% {
     transform: translateY(0%);
   }
-  50%{
+
+  50% {
     transform: translateY(25%);
   }
-  100%{
+
+  100% {
     transform: translateY(0%);
   }
 }
 
-.circle_2.a{
+.circle_2.a {
   animation: floating1 16s 2s infinite ease-in-out;
 }
 
-.circle_2.b{
+.circle_2.b {
   animation: floating1 16s 4s infinite ease-in-out;
 }
 
-.circle_2.c{
+.circle_2.c {
   animation: floating1 16s 6s infinite ease-in-out;
 }
 
 @keyframes floating1 {
-  0%{
+  0% {
     transform: translateY(0%);
   }
-  50%{
+
+  50% {
     transform: translateY(-25%);
   }
-  100%{
+
+  100% {
     transform: translateY(0%);
   }
 }
 
-.shortcuts{
+.shortcuts {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -173,7 +177,7 @@
   width: 100%;
 }
 
-.shortcuts div{
+.shortcuts div {
   width: auto;
   padding: 5%;
   display: flex;

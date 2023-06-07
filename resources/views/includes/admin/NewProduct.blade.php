@@ -14,14 +14,14 @@
                     <center><span id="product_name-error"></span></center>
                 </div>
                 <div class="form-group">
-                    <label for="">Cantidad</label>
+                    <label for="">Cantidad ( Cantidad actual: <span id="product_quantity_text"></span> )</label>
                     <input type="number" name="product_quantity" id="product_quantity" class="form-control" min="1">
-                    <center><span id="product_phone-error"></span></center>
+                    <center><span id="product_quantity-error"></span></center>
                 </div>
                 <div class="form-group">
                     <label for="">Precio</label>
                     <input type="number" name="product_price" id="product_price" class="form-control" min="0">
-                    <center><span id="product_email-error"></span></center>
+                    <center><span id="product_price-error"></span></center>
                 </div>
             </form>
         </div>

@@ -16,7 +16,7 @@
                 <div class="form-group">
                     <label for="">Precio</label>
                     <input type="number" name="service_price" id="service_price" class="form-control" min="0" value="1">
-                    <center><span id="service_email-error"></span></center>
+                    <center><span id="service_price-error"></span></center>
                 </div>
             </form>
         </div>

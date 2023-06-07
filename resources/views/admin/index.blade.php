@@ -14,7 +14,7 @@
                         <div class="circle circle_1 a"></div>
                         <div class="circle circle_2 a"></div>
                         <div class="card-content">
-                            <h5>0</h5>
+                            <h5>{{$todayData[0]->repairs}}</h5>
                         </div>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                         <div class="circle circle_1 b"></div>
                         <div class="circle circle_2 b"></div>
                         <div class="card-content">
-                            <h5>0 <span class="coin">Lps</span></h5>
+                            <h5>{{$todayData[0]->total}} <span class="coin">Lps</span></h5>
                         </div>
                     </div>
                 </div>

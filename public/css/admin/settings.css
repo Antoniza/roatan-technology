@@ -1,42 +1,95 @@
-.themes-container{
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    gap: 20px;
-    flex-direction: column;
+.themes-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  flex-direction: column;
 }
 
-.theme-container{
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    gap: 20px;
+.theme-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
 }
 
-.theme-card{
-    width: 150px;
-    height: 150px;
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    user-select: none;
-    box-shadow: 0 0 5px #000;
-    font-weight: 600;
-    transition: all 0.4s ease-in-out;
+.theme-card {
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 0 5px #000;
+  font-weight: 600;
+  transition: all 0.4s ease-in-out;
 }
 
-.theme-card:nth-of-type(1){
-    background: linear-gradient(to bottom, rgb(18, 18, 197) 20%, #fff 80%);
+.theme-card:nth-of-type(1) {
+  background: linear-gradient(to bottom, rgb(18, 18, 197) 20%, #fff 80%);
 }
 
-.theme-card:nth-of-type(2){
-    background: linear-gradient(to bottom, #000 20%, #062f4f 80%);
-    color: #fff;
+.theme-card:nth-of-type(2) {
+  background: linear-gradient(to bottom, #000 20%, #062f4f 80%);
+  color: #fff;
 }
 
-.theme-card:hover{
-    transform: scale(1.05);
-    transition: all 0.4s ease-in-out;
+.theme-card:hover {
+  transform: scale(1.05);
+  transition: all 0.4s ease-in-out;
+}
+
+.user-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  gap: 20px;
+  padding: 1rem;
+  background-color: #ffffff60;
+  border-radius: 15px;
+}
+
+.user-container div{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-container span{
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.user-container input{
+  width: 40%;
+  height: 40px;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  padding: .5rem 1rem;
+}
+
+.update_password{
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.update_password input{
+  width: 90%;
+}
+
+.update_password span{
+  cursor: pointer;
+}
+
+#hide_current_password,
+#hide_new_password,
+#hide_confirm_password{
+  display: none;
 }

@@ -1,7 +1,8 @@
 <body>
     <div class="header-repairs">
         <h1>Reparaciones</h1>
-        <a id="newProductButton"><button> <span><i class="fa-solid fa-screwdriver-wrench"></i></span> Nueva Reparación</button></a>
+        <a id="newRepairButton"><button> <span><i class="fa-solid fa-screwdriver-wrench"></i></span> Nueva
+                Reparación</button></a>
     </div>
     <hr>
     <div class="table-container">
@@ -10,35 +11,64 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Nombre</th>
+                    <th>Codigo</th>
+                    <th>Cliente</th>
                     <th>Correo</th>
                     <th>Telefono</th>
+                    <th>Estado</th>
+                    <th>Total</th>
+                    <th>Fecha</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($repairs as $item)
                     <tr>
-                        <tb>{{$item->id}}</tb>
-                        <tb>{{$item->name}}</tb>
-                        <tb>{{$item->email}}</tb>
-                        <tb>{{$item->phone}}</tb>
-                        <tb>edit | delete</tb>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->repair_code }}</td>
+                        <td>{{ $item->client_name }}</td>
+                        <td>{{ $item->client_email }}</td>
+                        <td>{{ $item->client_phone }} <a title="Click para chatear" class="whatsapp_button" href="https://api.whatsapp.com/send?phone={{$item->client_phone}}" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a></td>
+                        <td
+                            style=" background-color: rgba(0,0,0,0.7); @if ($item->status == 'Pendiente') color: yellow @elseif($item->status == 'Finalizado') color: blue @elseif($item->status == 'Terminado') color: green @else color: red @endif">
+                            {{ $item->status }}</td>
+                        @if ($item->status == 'Pendiente')
+                            <td>---</td>
+                        @else
+                            <td>{{ $item->total }} Lps</td>
+                        @endif
+                        <td>{{ $item->created_at }}</td>
+                        <td>
+                            @if ($item->status == 'Pendiente')
+                                <button class="submit-button complete_repair" data-id="{{ $item->id }}"
+                                    title="Finalizar">
+                                    <i class="fa-solid fa-check"></i></button>
+                                <button class="cancel-button cancel_repair" data-id="{{ $item->id }}"
+                                    title="Cancelar" data-token="{{ csrf_token() }}"><i
+                                        class="fa-solid fa-ban"></i></button>
+                            @elseif ($item->status == 'Finalizado')
+                                <button class="submit-button finish_repair" data-id="{{ $item->id }}"
+                                    title="Terminar" data-token="{{ csrf_token() }}"><i
+                                        class="fa-solid fa-check"></i></button>
+                            @endif
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
 </body>
-<script src="{{asset('js/admin/repairs.function.js')}}"></script>
+<script src="{{ asset('js/admin/repairs.function.js') }}"></script>
 <script>
     $('#repairs-table').DataTable({
         dom: 'Bfrtip',
         columnDefs: [{
-                target: 0,
-                visible: false,
-            },
-        ],
+            target: 0,
+            visible: false,
+        },{
+            target: 3,
+            visible: false,
+        }, ],
         buttons: [{
                 extend: 'colvis',
                 text: 'Columnas',

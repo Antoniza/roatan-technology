@@ -18,6 +18,6 @@ class LoginController extends Controller
             return redirect()->intended('dashboard');
         }
 
-        return redirect()->route('login')->with('fail', 'Nombre o contraseña incorrectas');
+        return redirect()->route('login')->with('fail', 'Nombre o contraseña incorrecta');
     }
 }

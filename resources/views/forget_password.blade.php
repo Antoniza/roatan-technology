@@ -13,19 +13,15 @@
 <body>
     <div class="container">
         <div class="right-content">
-            @if (session('fail'))
-                <div class="fail_login">{{session('fail')}}</div>
+            @if (session('success'))
+                <div class="success_alert">{{session('success')}}</div>
             @endif
-            @if (session('message'))
-                <div class="success_alert">{{session('message')}}</div>
-            @endif
-            <form action="{{ route('post-login') }}" method="post">
+            <form action="{{ route('forget-password-post') }}" method="post">
                 <img src="{{ asset('images/logo_roatan.png') }}" alt="">
                 @csrf
                 <input type="email" name="email" class="icon_email" autofocus placeholder="Correo">
-                <input type="password" name="password" id="password" placeholder="Contraseña">
-                <button type="submit">Ingresar</button>
-                <a href="{{route('forget-password')}}">¿Olvido su contraseña?</a>
+                <button type="submit">Enviar Correo</button>
+                <a href="{{route('login')}}">Ir a inicio de sesión</a>
             </form>
         </div>
     </div>

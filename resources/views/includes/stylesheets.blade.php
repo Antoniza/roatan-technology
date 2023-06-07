@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="{{asset('css/config/themes.css')}}">
 <link rel="stylesheet" href="{{asset('css/config/forms.css')}}">
 <link rel="stylesheet" href="{{asset('css/config/modals.css')}}">
+<link rel="stylesheet" href="{{asset('css/config/loading.css')}}">
 <link rel="stylesheet" href="{{asset('css/main.css')}}">
 <link rel="stylesheet" href="{{asset('css/admin/products_services.css')}}">
 <link rel="stylesheet" href="{{asset('css/admin/dashboard.css')}}">
