@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -25,8 +26,8 @@ class UserController extends Controller
             'new_password' => 'required|confirmed',
         ]);
 
-        if (!Hash::check($request->old_password, auth()->user()->password)) {
-            return response()->json(['message' => 'Contraseña actual incorrecta.']);
+        if (!Hash::check($request->old_password, Auth::user()->password)) {
+            return response()->json(['fail' => 'Contraseña actual incorrecta.']);
         }
 
         User::whereId(auth()->user()->id)->update([

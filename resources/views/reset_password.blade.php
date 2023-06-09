@@ -22,18 +22,24 @@
 
                 <input type="text" id="email_address" name="email" required autofocus placeholder="Correo Electrónico">
                 @if ($errors->has('email'))
-                    <span>{{ $errors->first('email') }}</span>
+                <div class="" style="background-color: red; font-size: 12px; color: #fff; padding: 1rem; border-radius: 8px; text-align: center; width: 100%;">
+                    <p style="">{{ $errors->first('email') }}</p>
+                </div>
                 @endif
 
                 <input type="password" id="password" name="password" required autofocus placeholder="Nueva Contraseña">
                 @if ($errors->has('password'))
-                    <span>{{ $errors->first('password') }}</span>
+                <div class="" style="background-color: red; font-size: 12px; color: #fff; padding: 1rem; border-radius: 8px; text-align: center; width: 100%;">
+                    <p>{{ $errors->first('password') }}</p>
+                </div>
                 @endif
 
                 <input type="password" id="password-confirm" name="password_confirmation" required
                     autofocus placeholder="Confirme contraseña">
                 @if ($errors->has('password_confirmation'))
-                    <span>{{ $errors->first('password_confirmation') }}</span>
+                <div class="" style="background-color: red; font-size: 12px; color: #fff; padding: 1rem; border-radius: 8px; text-align: center; width: 100%;">
+                    <p>{{ $errors->first('password_confirmation') }}</p>
+                </div>
                 @endif
 
                 <button type="submit">Cambiar contraseña</button>

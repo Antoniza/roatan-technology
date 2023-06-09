@@ -118,14 +118,22 @@ $("#update_password").click(function(){
       success: function (result) {
         $('.loading').css('display', 'none');
 
-        swal({
-          title: "Exitoso",
-          text: "Información de usuario actualizada.",
-          icon: "success",
-          button: "¡Perfecto!",
-        });
-
-        $(".main-body").load("/settings");
+        if(result.message){
+          swal({
+            title: "Exitoso",
+            text: result.message,
+            icon: "success",
+            button: "¡Perfecto!",
+          });
+          $(".main-body").load("/settings");
+        }else if(result.fail){
+          swal({
+            title: "Error",
+            text: result.fail,
+            icon: "error",
+            button: "Entendido",
+          });
+        }
       },
     })
     .fail(function (jqXHR, textStatus, errorThrown) {

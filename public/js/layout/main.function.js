@@ -1,4 +1,12 @@
 $(document).ready(function () {
+
+  swal({
+    title: "Bienvenido",
+    text: "Sea bienvenido " + $('#username').html() + " al sistema.",
+    icon: "success",
+    button: "¡Perfecto!",
+  });
+
   $("li a").on("click", function (event) {
     event.preventDefault();
 

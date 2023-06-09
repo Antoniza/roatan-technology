@@ -55,7 +55,7 @@
                 <div class="profile-header">
                     <img src="https://images.unsplash.com/photo-1518889735218-3e3a03fd3128?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
                         alt="">
-                    <span>{{ Auth::user()->name }}</span>
+                    <span id="username">{{ Auth::user()->name }}</span>
                     <input type="hidden" name="" id="user_id" value="{{ Auth::user()->id }}">
                 </div>
                 <div class="profile-body">

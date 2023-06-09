@@ -25,6 +25,16 @@ class PasswordController extends Controller
             'email' => 'required|email|exists:users',
         ]);
 
+        $validateTokenExist = DB::table('password_reset_tokens')
+            ->where([
+                'email' => $request->email
+            ])
+            ->get();
+
+            if(count($validateTokenExist) > 0){
+                return redirect()->route('forget-password')->with('fail', 'Ya se ha generado un token anteriormente');
+            }
+
         $token = Str::random(64);
 
         DB::table('password_reset_tokens')->insert([
