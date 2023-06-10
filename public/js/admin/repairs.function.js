@@ -45,27 +45,10 @@ $("#submit-repair-button").click(function () {
       },
     })
     .fail(function (jqXHR, textStatus, errorThrown) {
-      if (jqXHR.responseJSON.errors.name) {
-        $("#technical_name-error").html(jqXHR.responseJSON.errors.name);
-      }
-
-      if (jqXHR.responseJSON.errors.speciality) {
-        $("#technical_speciality-error").html(
-          jqXHR.responseJSON.errors.speciality
-        );
-      }
-
-      if (jqXHR.responseJSON.errors.email) {
-        $("#technical_email-error").html(
-          jqXHR.responseJSON.errors.email
-        );
-      }
-
-      if (jqXHR.responseJSON.errors.phone) {
-        $("#technical_phone-error").html(
-          jqXHR.responseJSON.errors.phone
-        );
-      }
+      swal("" + jqXHR.responseJSON.message + "", {
+        icon: "error",
+        button: 'Entendido'
+      });
 
       $('.loading').css('display', 'none');
     });
