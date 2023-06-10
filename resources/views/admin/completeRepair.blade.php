@@ -40,4 +40,5 @@
     </div>
 </div>
 <button class="submit-button" id="complete_repair">Completar</button>
+<button class="cancel-button" id="cancel_complete_repair">Regresar</button>
 <script src="{{ asset('js/admin/repairs.function.js') }}"></script>
