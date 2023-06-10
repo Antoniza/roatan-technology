@@ -47,6 +47,7 @@ class RepairsController extends Controller
         $repair -> technical = $request->technical;
         $repair -> created_by = Auth::user()->id;
         $repair -> status = 'Pendiente';
+        $repair -> total = 0;
         $repair -> save();
 
         $service = Service::where('id','=', $request->service_required)->get();
