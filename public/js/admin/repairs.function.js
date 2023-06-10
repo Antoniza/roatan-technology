@@ -408,6 +408,8 @@ $('#complete_repair').click(function () {
 
 });
 
+// * CANCEL COMPLETE REPAIR
+
 $('#cancel_complete_repair').click(function () {
   $(".main-body").load("/repairs");
 });
