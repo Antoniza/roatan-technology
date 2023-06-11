@@ -78,7 +78,7 @@
                 extend: 'excel',
                 text: '<i class="fa-solid fa-file-excel"></i> Excel',
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5]
+                    columns: ':visible'
                 }
             }, {
                 extend: 'print',
