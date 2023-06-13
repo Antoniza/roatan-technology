@@ -113,10 +113,37 @@ class ProductsServicesController extends Controller
         exit;
     }
 
+    public function search_service(Request $request)
+    {
+
+        $search = $request->search;
+
+        if ($search == '') {
+            $autocomplate = Service::orderby('name', 'asc')->select('*')->limit(5)->get();
+        } else {
+            $autocomplate = Service::orderby('name', 'asc')->select('*')->where('name', 'like', '%' . $search . '%')->limit(5)->get();
+        }
+
+        $response = array();
+        foreach ($autocomplate as $autocomplate) {
+            $response[] = array("value" => $autocomplate->id, "label" => $autocomplate->name);
+        }
+
+        echo json_encode($response);
+        exit;
+    }
+
     public function getItem(Request $request)
     {
         $item = Product::find($request->item);
 
         return response()->json(['message' => 'Buscando...', 'data' => $item, 'quantity' => $request->quantity]);
+    }
+
+    public function getService(Request $request)
+    {
+        $item = Service::find($request->item);
+
+        return response()->json(['message' => 'Buscando...', 'data' => $item]);
     }
 }

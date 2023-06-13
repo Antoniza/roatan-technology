@@ -58,7 +58,7 @@
 
 .information-panel input {
   width: 70%;
-  height: 30px;
+  height: 40px;
   margin-bottom: 1rem;
   outline: none;
   padding: 1rem .5rem;
@@ -82,7 +82,8 @@
   color: #000;
 }
 
-.products-form {
+.products-form,
+.services-form {
   display: flex;
   height: 15vh;
   background-color: #fff;
@@ -113,4 +114,24 @@
   text-align: left;
   vertical-align: middle;
   border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+.services-form input{
+  width: 80%;
+  height: 40px;
+}
+
+.services-form button{
+  width: 20%;
+  height: 40px;
+  border: none;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: green;
+  cursor: pointer;
+  user-select: none;
+}
+
+.services-form button:hover{
+  background-color: lightgreen;
 }

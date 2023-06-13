@@ -1,6 +1,14 @@
 <h1>Completar Reparación</h1>
 <div class="complete-content">
     <div class="information-panel">
+        <details>
+            <summary style="cursor: pointer">> Agregar servicio</summary>
+            <div class="services-form">
+                <input type="hidden" name="" id="item_id_service">
+                <input type="text" id='service_search' placeholder="Buscar servicio..." data-item autofocus class="form-control">
+                <button id="add-servicer_table">Agregar</button>
+            </div>
+        </details>
         <div class="products-form">
             <input type="hidden" name="" id="item_id">
             <input type="text" id='product_search' placeholder="Buscar producto..." data-item autofocus class="form-control">
@@ -21,9 +29,9 @@
         <table class="dataTables_wrapper" id="product-list">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
                     <th>Cantidad</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
                     <th>Total</th>
                 </tr>
             </thead>
@@ -36,7 +44,9 @@
                 </tr>
             </tbody>
         </table>
-        <h3>Total: <span id="total">{{$service[0]->price}} Lps</span></h3>
+        <h3>Subtotal: <span id="subtotal">{{$service[0]->price}} Lps</span></h3>
+        <h3>ISV 15%: <span id="isv">{{$service[0]->price * 0.15}} Lps</span></h3>
+        <h3>Total: <span id="total">{{$service[0]->price + ($service[0]->price * 0.15)}} Lps</span></h3>
     </div>
 </div>
 <button class="submit-button" id="complete_repair">Completar</button>

@@ -15,6 +15,7 @@ $("#submit-repair-button").click(function () {
     device: jQuery("#client_device").val(),
     service_required: jQuery("#repair_service").find(":selected").val(),
     technical: jQuery("#repair_technical").find(":selected").val(),
+    observations: jQuery("#observations").val(),
   };
   $.ajaxSetup({
     headers: {
@@ -156,6 +157,29 @@ $("#product_search").autocomplete({
   },
 });
 
+$("#service_search").autocomplete({
+  source: function (request, response) {
+    // Fetch data
+    $.ajax({
+      url: "/search-service",
+      type: "post",
+      dataType: "json",
+      data: {
+        _token: CSRF_TOKEN,
+        search: request.term,
+      },
+      success: function (data) {
+        response(data);
+      },
+    });
+  },
+  select: function (event, ui) {
+    $("#service_search").val(ui.item.label);
+    $("#item_id_service").val(ui.item.value);
+    return false;
+  },
+});
+
 $("#quantity").keypress(function (event) {
   var keycode = event.keyCode ? event.keyCode : event.which;
   if (keycode == "13") {
@@ -215,11 +239,19 @@ $("#quantity").keypress(function (event) {
 
           table.append(markup);
 
-          var total = parseFloat($("#total").html());
-          $("#total").html(
-            (total + data.price * result.quantity).toFixed(2) +
+          var subtotalt = parseFloat($("#subtotal").html());
+          $("#subtotal").html(
+            (subtotalt + data.price * result.quantity).toFixed(2) +
             " Lps"
           );
+
+          subtotalt = parseFloat($("#subtotal").html());
+
+          let isv = subtotalt * 0.15;
+          $("#isv").html((isv).toFixed(2) + " Lps");
+
+          let totalt = parseFloat($("#total").html());
+          $("#total").html((subtotalt + isv).toFixed(2) + " Lps");
 
           // TODO: DOUBLE CLICK IN ROW TO DELETE RECORD
           $("#product-list tbody tr").dblclick(function (e) {
@@ -268,8 +300,15 @@ $("#quantity").keypress(function (event) {
                   stringTotalContent.length - 5
                 );
 
+                let subtotalt = parseFloat($("#subtotal").html());
+                $("#subtotal").html((subtotalt - quantity * price).toFixed(2) + " Lps");
+
+                subtotalt = parseFloat($("#subtotal").html());
+                let isv = subtotalt * 0.15;
+                $("#isv").html((isv).toFixed(2) + " Lps");
+
                 let totalt = parseFloat($("#total").html());
-                $("#total").html((totalt - quantity * price).toFixed(2) + " Lps");
+                $("#total").html((subtotalt + isv).toFixed(2) + " Lps");
 
                 $(this).remove();
               } else {
@@ -281,6 +320,123 @@ $("#quantity").keypress(function (event) {
       },
     });
   }
+});
+
+$('#add-servicer_table').click(function(){
+  var dataForm = {
+    item: jQuery("#item_id_service").val(),
+  };
+  $.ajaxSetup({
+    headers: {
+      "X-CSRF-TOKEN": CSRF_TOKEN,
+    },
+  });
+  jQuery.ajax({
+    url: "/get-service",
+    method: "get",
+    data: dataForm,
+    success: function (result) {
+      jQuery("#item_id_service").val("");
+        jQuery("#services_search").val("");
+        jQuery("#product_search").focus();
+
+        let data = result.data;
+
+        let table = $("#product-list tbody");
+
+        let markup = "";
+
+        markup =
+          `
+          <tr id='item' data-product_id=${data.id} data-type='service'>
+            <td>1</td>
+            <td>${data.name}</td>
+            <td>${data.price.toFixed(2)}</td>
+            <td>${(data.price).toFixed(2)}</td>
+          </tr>
+        `;
+
+        table.append(markup);
+
+        var subtotalt = parseFloat($("#subtotal").html());
+        $("#subtotal").html(
+          (subtotalt + data.price).toFixed(2) +
+          " Lps"
+        );
+
+        subtotalt = parseFloat($("#subtotal").html());
+
+        let isv = subtotalt * 0.15;
+        $("#isv").html((isv).toFixed(2) + " Lps");
+
+        let totalt = parseFloat($("#total").html());
+        $("#total").html((subtotalt + isv).toFixed(2) + " Lps");
+
+        // TODO: DOUBLE CLICK IN ROW TO DELETE RECORD
+        $("#product-list tbody tr").dblclick(function (e) {
+          let item = this;
+
+          swal({
+            title: "Eliminando elemento",
+            text: "Se eliminara el elemento seleccionado",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          }).then((willDelete) => {
+            if (willDelete) {
+              swal("¡Se eliminó con exito de la lista!", {
+                icon: "success",
+              });
+              // * GETTING QUANTITY OF THE PRODUCT IN ROW
+              let stringQuantity = String(item.innerHTML.split("\n")[1]);
+              let stringQuantityContent = stringQuantity.trim();
+              let quantity = stringQuantityContent.substring(
+                4,
+                stringQuantityContent.length - 5
+              );
+
+              // * GETTING NAME OF THE PRODUCT IN ROW
+              let stringName = String(item.innerHTML.split("\n")[2]);
+              let stringNameContent = stringName.trim();
+              let name = stringNameContent.substring(
+                4,
+                stringNameContent.length - 5
+              );
+
+              // * GETTING PRICES OF THE PRODUCT IN ROW
+              let stringPrice = String(item.innerHTML.split("\n")[3]);
+              let stringPriceContent = stringPrice.trim();
+              let price = stringPriceContent.substring(
+                4,
+                stringPriceContent.length - 5
+              );
+
+              // * GETTING TOTAL OF PRODUCT IN ROW
+              let stringTotal = String(item.innerHTML.split("\n")[4]);
+              let stringTotalContent = stringTotal.trim();
+              let total = stringTotalContent.substring(
+                4,
+                stringTotalContent.length - 5
+              );
+
+              let subtotalt = parseFloat($("#subtotal").html());
+              $("#subtotal").html((subtotalt - quantity * price).toFixed(2) + " Lps");
+
+              subtotalt = parseFloat($("#subtotal").html());
+              let isv = subtotalt * 0.15;
+              $("#isv").html((isv).toFixed(2) + " Lps");
+
+              let totalt = parseFloat($("#total").html());
+              $("#total").html((subtotalt + isv).toFixed(2) + " Lps");
+
+              $(this).remove();
+            } else {
+              swal("Se cancelo la acción");
+            }
+          });
+        });
+    },
+  });
 });
 
 // TODO: DOUBLE CLICK IN ROW TO DELETE RECORD
@@ -330,8 +486,15 @@ $("#product-list tbody tr").dblclick(function (e) {
         stringTotalContent.length - 5
       );
 
+      let subtotalt = parseFloat($("#subtotal").html());
+      $("#subtotal").html((subtotalt - quantity * price).toFixed(2) + " Lps");
+
+      subtotalt = parseFloat($("#subtotal").html());
+      let isv = subtotalt * 0.15;
+      $("#isv").html((isv).toFixed(2) + " Lps");
+
       let totalt = parseFloat($("#total").html());
-      $("#total").html((totalt - quantity * price).toFixed(2) + " Lps");
+      $("#total").html((subtotalt + isv).toFixed(2) + " Lps");
 
       $(this).remove();
     } else {
@@ -379,7 +542,7 @@ $('#complete_repair').click(function () {
       id,
       quantity,
       name,
-      type: $(list[i]).data('type') ,
+      type: $(list[i]).data('type'),
       price: price + ' Lps',
       total: total + ' Lps'
     })
@@ -393,7 +556,7 @@ $('#complete_repair').click(function () {
     dataType: "JSON",
     data: {
       repair_details: details,
-      total: parseFloat($('#total').html()),
+      total: parseFloat($('#subtotal').html()),
       _method: "PATCH",
       _token: CSRF_TOKEN,
     },
@@ -412,4 +575,9 @@ $('#complete_repair').click(function () {
 
 $('#cancel_complete_repair').click(function () {
   $(".main-body").load("/repairs");
+});
+
+$("#add_service").click(function () {
+
+  $("#add-service").addClass("show");
 });

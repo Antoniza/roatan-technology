@@ -119,6 +119,10 @@ Route::post('/services/{id}', [ProductsServicesController::class, 'update_servic
 
 Route::delete('/services/{id}', [ProductsServicesController::class, 'delete_service'])->name('dashboard-delete-service')->middleware('auth');
 
+Route::post('/search-service', [ProductsServicesController::class, 'search_service'])->name('dashboard-service-search')->middleware('auth');
+
+Route::get('/get-service', [ProductsServicesController::class, 'getService'])->name('dashboard-get-service')->middleware('auth');
+
 // * SETTINGS ROUTES
 
 Route::get('/settings', [SettingsController::class, 'index'])->name('dashboard-settings')->middleware('auth');

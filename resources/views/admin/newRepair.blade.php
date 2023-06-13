@@ -41,6 +41,11 @@
                 </select>
                 <center><span id="repair_technical-error"></span></center>
             </div>
+            <div class="form-group">
+                <label for="">Observaciones</label>
+                <textarea name="" id="observations" cols="30" rows="5"></textarea>
+                <center><span id="repair_quantity-error"></span></center>
+            </div>
         </form>
         <button class="submit-button" id="submit-repair-button">Guardar</button>
     </div>

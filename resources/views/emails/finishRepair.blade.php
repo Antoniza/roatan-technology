@@ -52,7 +52,7 @@
 <body>
     <div class="email">
         <div class="logo-container">
-            <img src="https://i.ibb.co/S3gj2nm/logo-roatan.png" alt="logo-roatan">
+            <img style="width:50%; margin-left: 25%;" src="https://i.ibb.co/S3gj2nm/logo-roatan.png" alt="logo-roatan">
         </div>
         <div class="mail-container">
             <div class="mail-header">
@@ -65,7 +65,7 @@
                     <br>
                     <hr>
                     <br>
-                    <h4>información de reparación:</h4>
+                    <h4>Información de reparación:</h4>
                     <p>- <b>Codigo:</b> {{$_code}}</p>
                     <p>- <b>Cliente:</b> {{$_client}}</p>
                     <p>- <b>Dispositivo:</b> {{$_device}}</p>
@@ -74,28 +74,29 @@
                     <p>- <b>Fecha y hora de solicitud:</b> {{$_time}}</p>
                     <hr>
                     <h4>Descripción de total:</h4>
-                    <br>
                     <table style="width:100%;">
                         <thead style="padding: .5rem 1rem; background-color:rgb(38, 82, 227); color: #fff">
                             <tr>
-                                <th style="text-aling: left;">Cantidad</th>
-                                <th style="text-aling: left;">Nombre</th>
-                                <th style="text-aling: left;">Precio</th>
-                                <th style="text-aling: left;">Total</th>
+                                <th>Cantidad</th>
+                                <th>Nombre</th>
+                                <th>Precio</th>
+                                <th>Total</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($_list as $item)
-                                <tr style="padding: .5rem 1rem">
-                                    <td>{{$item->quantity}}</td>
-                                    <td>{{$item->name}}</td>
-                                    <td>{{$item->price}}</td>
-                                    <td>{{$item->total}}</td>
+                                <tr style="padding: .5rem 1rem; border-bottom:2px #6d6c6c solid;">
+                                    <td  style="padding: .5rem 1rem;">{{$item->quantity}}</td>
+                                    <td  style="padding: .5rem 1rem;">{{$item->name}}</td>
+                                    <td  style="padding: .5rem 1rem;">{{$item->price}}</td>
+                                    <td style="text-align: right; padding: .5rem 1rem;">{{$item->total}}</td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                     <hr>
+                    <p>- <b>Subtotal:</b> {{$_subtotal}} Lps</p>
+                    <p>- <b>ISV 15%:</b> {{$_isv}} Lps</p>
                     <p>- <b>Total a Pagar:</b> {{$_total}} Lps</p>
                 </div>
             </div>

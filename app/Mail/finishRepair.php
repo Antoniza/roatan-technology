@@ -22,6 +22,8 @@ class finishRepair extends Mailable
     public $_service;
     public $_technical;
     public $_time;
+    public $_subtotal;
+    public $_isv;
     public $_total;
     /**
      * Create a new message instance.
@@ -34,7 +36,9 @@ class finishRepair extends Mailable
         $this->_service = $service;
         $this->_technical = $technical;
         $this->_list = $list;
-        $this->_total = $total;
+        $this->_subtotal = $total;
+        $this->_isv = $total*0.15;
+        $this->_total = $this->_subtotal + $this->_isv;
 
         $this->_time = Carbon::now();
     }
