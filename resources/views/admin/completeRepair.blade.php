@@ -1,4 +1,10 @@
 <h1>Completar Reparación</h1>
+<div class="recomendation modal">
+    <h2>Recomandación para cliente</h2>
+    <textarea name="" id="recomendation_text" cols="30" rows="10"></textarea>
+    <br>
+    <button class="submit-button" id="complete_repair">Completar</button>
+</div>
 <div class="complete-content">
     <div class="information-panel">
         <details>
@@ -24,6 +30,7 @@
         <p><b>Telefono del cliente:</b> {{$repair->client_phone}}</p>
         <p><b>Dispositivo:</b> {{$repair->device}}</p>
         <p><b>Servicio Requerido:</b> {{$service[0]->name}}</p>
+        <p><b>Observaciones:</b> <br>{{$repair->observations}}</p>
     </div>
     <div class="products-panel">
         <table class="dataTables_wrapper" id="product-list">
@@ -49,6 +56,6 @@
         <h3>Total: <span id="total">{{$service[0]->price + ($service[0]->price * 0.15)}} Lps</span></h3>
     </div>
 </div>
-<button class="submit-button" id="complete_repair">Completar</button>
+<button class="submit-button" id="goto_remendation">Continuar</button>
 <button class="cancel-button" id="cancel_complete_repair">Regresar</button>
 <script src="{{ asset('js/admin/repairs.function.js') }}"></script>

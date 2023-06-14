@@ -25,7 +25,7 @@
                 @foreach ($repairs as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td>{{ $item->repair_code }}</td>
+                        <td><a href="/get-repair/{{ $item->id }}" class="get-repair">{{ $item->repair_code }} <i class="fa-solid fa-eye"></i></a></td>
                         <td>{{ $item->client_name }}</td>
                         <td>{{ $item->client_email }}</td>
                         <td>{{ $item->client_phone }} <a title="Click para chatear" class="whatsapp_button" href="https://api.whatsapp.com/send?phone={{$item->client_phone}}" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a></td>

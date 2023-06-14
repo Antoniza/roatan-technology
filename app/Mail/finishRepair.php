@@ -25,10 +25,12 @@ class finishRepair extends Mailable
     public $_subtotal;
     public $_isv;
     public $_total;
+    public $_observation;
+    public $_recomendation;
     /**
      * Create a new message instance.
      */
-    public function __construct($code, $client, $device, $service, $technical, $list, $total)
+    public function __construct($code, $client, $device, $service, $technical, $list, $total, $recomendation, $observation)
     {
         $this->_code = $code;
         $this->_client = $client;
@@ -39,6 +41,8 @@ class finishRepair extends Mailable
         $this->_subtotal = $total;
         $this->_isv = $total*0.15;
         $this->_total = $this->_subtotal + $this->_isv;
+        $this->_recomendation = $recomendation;
+        $this->_observation = $observation;
 
         $this->_time = Carbon::now();
     }

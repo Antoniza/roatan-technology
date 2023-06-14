@@ -83,6 +83,8 @@ Route::get('/complete-repair/{id}', [RepairsController::class, 'complete_repair'
 
 Route::patch('/complete-repair/{id}', [RepairsController::class, 'complete'])->name('dashboard-complete')->middleware('auth');
 
+Route::get('/get-repair/{id}', [RepairsController::class, 'get_repair'])->name('dashboard-get_repair')->middleware('auth');
+
 // * TECHNICALS ROUTES
 
 Route::get('/technicals', [TechnicalsController::class, 'index'])->name('dashboard-technicals')->middleware('auth');

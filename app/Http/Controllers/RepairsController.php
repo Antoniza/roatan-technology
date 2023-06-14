@@ -55,7 +55,7 @@ class RepairsController extends Controller
 
         $technical = Technical::where('id','=', $request->technical)->get();
 
-        Mail::to($request->client_email)->send(new newRepairMail($request->repair_code, $request->client_name, $request->device, $service[0]->name, $technical[0]->name));
+        Mail::to($request->client_email)->send(new newRepairMail($request->repair_code, $request->client_name, $request->device, $service[0]->name, $technical[0]->name, $request->observations));
 
         return response()->json(['message'=>'Reparación puesta en progreso.']);
     }
@@ -90,6 +90,7 @@ class RepairsController extends Controller
         $repair -> repair_details = json_encode($request->repair_details);
         $repair -> status = "Finalizado";
         $repair -> total = $request -> total;
+        $repair -> recomendation = $request->recomendation;
         $repair->save();
 
         $service = Service::where('id','=', $repair->service_required)->get();
@@ -104,8 +105,15 @@ class RepairsController extends Controller
             }
         }
 
-        Mail::to($repair->client_email)->send(new finishRepair($repair->repair_code, $repair->client_name, $repair->device, $service[0]->name, $technical[0]->name, json_decode($repair->repair_details), $repair->total));
+        Mail::to($repair->client_email)->send(new finishRepair($repair->repair_code, $repair->client_name, $repair->device, $service[0]->name, $technical[0]->name, json_decode($repair->repair_details), $repair->total, $request->recomendation, $repair->observation));
 
         return response()->json(['message'=>'Reparacion completada.']);
+    }
+
+    public function get_repair($id)
+    {
+        $repair = Repair::find($id);
+        $service = Service::find($repair->service_required);
+        return response()->view('admin.viewRepair', ['repair' => $repair, 'details'=>json_decode($repair->repair_details), 'service'=>$service]);
     }
 }

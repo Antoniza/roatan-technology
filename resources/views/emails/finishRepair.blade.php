@@ -72,6 +72,7 @@
                     <p>- <b>Tecnico asignado:</b> {{$_technical}}</p>
                     <p>- <b>Servicio requerido:</b> {{$_service}}</p>
                     <p>- <b>Fecha y hora de solicitud:</b> {{$_time}}</p>
+                    <p>- <b>Observaciones:</b> <br>{{$_observation}}</p>
                     <hr>
                     <h4>Descripción de total:</h4>
                     <table style="width:100%;">
@@ -88,7 +89,7 @@
                                 <tr style="padding: .5rem 1rem; border-bottom:2px #6d6c6c solid;">
                                     <td  style="padding: .5rem 1rem;">{{$item->quantity}}</td>
                                     <td  style="padding: .5rem 1rem;">{{$item->name}}</td>
-                                    <td  style="padding: .5rem 1rem;">{{$item->price}}</td>
+                                    <td  style="text-align: right; padding: .5rem 1rem;">{{$item->price}}</td>
                                     <td style="text-align: right; padding: .5rem 1rem;">{{$item->total}}</td>
                                 </tr>
                             @endforeach
@@ -98,6 +99,11 @@
                     <p>- <b>Subtotal:</b> {{$_subtotal}} Lps</p>
                     <p>- <b>ISV 15%:</b> {{$_isv}} Lps</p>
                     <p>- <b>Total a Pagar:</b> {{$_total}} Lps</p>
+                </div>
+                <br>
+                <div class="recomendation" style="text-align: center">
+                    <h3>Recomendación</h3>
+                    <p>{{$_recomendation}}</p>
                 </div>
             </div>
             <hr>

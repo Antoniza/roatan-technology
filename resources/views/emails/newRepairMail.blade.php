@@ -71,6 +71,7 @@
                     <p>- <b>Tecnico asignado:</b> {{$_technical}}</p>
                     <p>- <b>Servicio requerido:</b> {{$_service}}</p>
                     <p>- <b>Fecha y hora de solicitud:</b> {{$_time}}</p>
+                    <p>- <b>Observaciones:</b> <br> {{$_observation}}</p>
                 </div>
             </div>
             <hr>

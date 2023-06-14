@@ -21,16 +21,18 @@ class newRepairMail extends Mailable
     public $_service;
     public $_technical;
     public $_time;
+    public $_observation;
     /**
      * Create a new message instance.
      */
-    public function __construct($code, $client, $device, $service, $technical)
+    public function __construct($code, $client, $device, $service, $technical, $observation)
     {
         $this->_code = $code;
         $this->_client = $client;
         $this->_device = $device;
         $this->_service = $service;
         $this->_technical = $technical;
+        $this->_observation = $observation;
 
         $this->_time = Carbon::now();
     }

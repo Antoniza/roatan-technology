@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('status');
             $table->double('total');
             $table->longText('observations')->nullable();
+            $table->longText('recomendation')->nullable();
             $table->foreign('service_required')->references('id')->on('services');
             $table->foreign('technical')->references('id')->on('technicals');
             $table->foreign('created_by')->references('id')->on('users');
